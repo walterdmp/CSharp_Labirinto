@@ -62,16 +62,7 @@ namespace LabirintodoRato
 
                 meuLab[i, j] = '¢';
 
-                if (meuLab[i - 1, j] == 'Q' || meuLab[i + 1, j] == 'Q' || meuLab[i, j + 1] == 'Q' || meuLab[i, j - 1] == 'Q')
-                {
-                    Console.Clear();
-                    mostrarLabirinto(meuLab, limit, limit);
-                    Console.WriteLine("O rato encontrou o queijo!");
-                    break;
-                }
-
-
-                if (meuLab[i, j + 1] == ' ')
+                if (meuLab[i, j + 1] == ' ' || meuLab[i, j + 1] == 'Q')
                 {
                     linha = i;
                     coluna = j;
@@ -81,7 +72,7 @@ namespace LabirintodoRato
                     sentido = '-';
 
                 }
-                else if (meuLab[i + 1, j] == ' ')
+                else if (meuLab[i + 1, j] == ' ' || meuLab[i + 1, j] == 'Q')
                 {
                     linha = i;
                     coluna = j;
@@ -90,7 +81,7 @@ namespace LabirintodoRato
                     i++;
                     sentido = '|';
                 }
-                else if (meuLab[i, j - 1] == ' ')
+                else if (meuLab[i, j - 1] == ' ' || meuLab[i, j - 1] == 'Q')
                 {
                     linha = i;
                     coluna = j;
@@ -99,7 +90,7 @@ namespace LabirintodoRato
                     j--;
                     sentido = '-';
                 }
-                else if (meuLab[i - 1, j] == ' ')
+                else if (meuLab[i - 1, j] == ' ' || meuLab[i - 1, j] == 'Q')
                 {
                     linha = i;
                     coluna = j;
@@ -122,12 +113,13 @@ namespace LabirintodoRato
                     break;
                 }
 
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(100);
                 Console.Clear();
                 mostrarLabirinto(meuLab, limit, limit);
                 meuLab[linha, coluna] = sentido;
 
             } while (meuLab[i, j] != 'Q');
+            Console.WriteLine("O rato encontrou o queijo!");
         }
 
 
