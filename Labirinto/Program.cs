@@ -103,9 +103,23 @@ namespace LabirintodoRato
                 {
                     linha = i;
                     coluna = j;
-                    j = pilha.Pop();
-                    i = pilha.Pop();
+                    int ultimoMovimentoJ = pilha.Pop();
+                    int ultimoMovimentoI = pilha.Pop();
+
+
+                    if (ultimoMovimentoI == i)
+                    {
+                        sentido = '-';
+                    }
+                    else
+                    {
+                        sentido = '|';
+                    }
+
+                    j = ultimoMovimentoJ;
+                    i = ultimoMovimentoI;
                 }
+
 
                 else
                 {
